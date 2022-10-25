@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.subject = this.loginServe.$isConnect.subscribe({
       next : (connectState : boolean) => {
-        console.log("here")
+        console.log("Sub Obs login page")
         this.isConnect = connectState
       },
       error : () => {},
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
+    console.log("unsub login")
     this.subject.unsubscribe()
   }
 
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   
   logout(){
     this.loginServe.logout()
+    this.loginServe.$isConnect.complete()
   }
 
 }

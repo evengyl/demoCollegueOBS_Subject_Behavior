@@ -8,28 +8,9 @@ import { LoginService } from '../shared/login.service';
 })
 export class NavbarComponent implements OnInit {
 
-  isConnect : boolean = false
-  subject : Subscription = new Subscription()
-
-  
-  constructor(private loginServe : LoginService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.subject = this.loginServe.$isConnect.subscribe({
-      next : (connectState : boolean) => {
-        console.log("here")
-        this.isConnect = connectState
-      },
-      error : () => {},
-      complete : () => {}
-    })
-
-
-    this.loginServe.$isLoveTM.subscribe({
-      next : (state : boolean) => {
-        console.log("I Love Dragons")
-      }
-    })
   }
 
 }
